@@ -36,13 +36,4 @@ const createObjects = () => {
   console.log(todoObj.getPriority());
 };
 
-const addTasks = () => {
-  addTaskBtn.addEventListener("click", addObjects);
-};
-
-const addObjects = (event) => {
-  createObjects();
-  event.preventDefault();
-};
-
-export { addTasks };
+export { todo, createObjects };
