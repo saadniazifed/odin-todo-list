@@ -17,23 +17,14 @@ const todoFactory = (name, description, priority, id) => {
   };
 };
 
-const createObjects = () => {
-  //Selecting value from the form
-  const nameOfTask = document.querySelector("#nameOfTask").value;
-  const descriptionOfTask = document.querySelector("#descriptionOfTask").value;
-  const priorityOfTask = document.querySelector(".priorityOfTask").value;
+const createObjects = (taskObj) => {
+  const { name, description, priority } = taskObj;
 
   //Creating the Object
-  const todoObj = todoFactory(nameOfTask, descriptionOfTask, priorityOfTask);
+  taskObj = todoFactory(name, description, priority);
 
   //Pushing it in the array
-  todo.push(todoObj);
-
-  //Console logging the values.
-  console.log(todo);
-  console.log(todoObj.getName());
-  console.log(todoObj.getDescription());
-  console.log(todoObj.getPriority());
+  todo.push(taskObj);
 };
 
 export { todo, createObjects };
