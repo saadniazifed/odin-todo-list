@@ -1,31 +1,31 @@
-import { addTaskBtn, mainBody, addTodoList } from "./querySelectors";
-import { createObjects } from "./todo";
+// import { addTaskBtn, mainBody, addTodoList } from "./querySelectors";
+// import { createObjects } from "./todo";
 
-const addTasks = () => {
-  addTaskBtn.addEventListener("click", addTodos);
-};
+// const addTasks = () => {
+//   addTaskBtn.addEventListener("click", addTodos);
+// };
 
-//Function Responsible for Adding the todos and creating an object on each click.
-const addTodos = (event) => {
-  const taskObj = {
-    name: document.querySelector("#nameOfTask").value,
-    description: document.querySelector("#descriptionOfTask").value,
-    priority: document.querySelector(".priorityOfTask").value,
-  };
+// //Function Responsible for Adding the todos and creating an object on each click.
+// const addTodos = (event) => {
+//   const taskObj = {
+//     name: "Project",
+//     description: "Something",
+//     priority: "Low",
+//   };
 
-  appendTodos(taskObj);
-  createObjects(taskObj);
-  event.preventDefault();
-};
+//   appendTodos(taskObj);
+//   createObjects(taskObj);
+//   event.preventDefault();
+// };
 
-//Function responsible for appending the todos.
-const appendTodos = (taskObj) => {
-  const name = taskObj.name;
-  const description = taskObj.description;
-  const priority = taskObj.priority;
+// //Function responsible for appending the todos.
+// const appendTodos = (taskObj) => {
+//   const name = taskObj.name;
+//   const description = taskObj.description;
+//   const priority = () => taskObj.priority;
 
-  addTodoList.append(name, description, priority);
-  mainBody.appendChild(addTodoList);
-};
+//   addTodoList.append(name, description, priority);
+//   mainBody.appendChild(addTodoList);
+// };
 
-export { addTasks };
+// export { addTasks };
