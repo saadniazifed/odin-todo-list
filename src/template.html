@@ -8,5 +8,57 @@
   </head>
   <body>
     <!-- <div class="grid-container"></div> -->
+    <h1>Projects</h1>
+    <input type="text" name="addTaskTitle" id="addTaskTitle" />
+    <button class="addTitleBtn">Add Title</button>
+
+    <div class="addTitleDiv"></div>
+
+    <form action="#" onsubmit="return false">
+      <label for="taskName">Name: </label>
+      <input type="text" name="taskName" id="taskName" />
+
+      <label for="taskDescription">Description: </label>
+      <textarea
+        name="taskDescription"
+        id="taskDescription"
+        cols="30"
+        rows="10"
+      ></textarea>
+
+      <label for="taskPriority">Priority: </label>
+
+      <input
+        type="radio"
+        id="lowPriority"
+        name="lowPriority"
+        value="low"
+        class="priorityValue"
+      />
+      <label for="lowPriority">Low</label><br />
+      <input
+        type="radio"
+        id="mediumPriority"
+        name="mediumPriority"
+        value="medium"
+        class="priorityValue"
+      />
+      <label for="mediumPriority">Medium</label><br />
+      <input
+        type="radio"
+        id="highPriority"
+        name="highPriority"
+        value="high"
+        class="priorityValue"
+      />
+      <label for="highPriority">High</label>
+
+      <label for="dueDate">Due Date: </label>
+      <input type="text" name="dueDate" id="dueDate" />
+
+      <button type="button" class="addTaskInDom">Add Task</button>
+    </form>
+
+    <div class="addTodos"></div>
   </body>
 </html>
