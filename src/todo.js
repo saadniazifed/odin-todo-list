@@ -31,12 +31,13 @@ const todoFactory = (name, description, priority, dueDate) => {
   };
 };
 
-const createTodo = ({ name }) => {
+const createTodo = ({ name, description, priority, dueDate }) => {
   //Creating the Object
-  const todoObj = todoFactory(name);
+  const todoObj = todoFactory(name, description, priority, dueDate);
   //Pushing it in the array
   todo.push(todoObj);
   // console.log(todoObj.getName());
+  return todoObj;
 };
 
 const newDetails = {

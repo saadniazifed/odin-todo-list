@@ -15,6 +15,11 @@ const addTitle = () => {
 
 const todoValues = {
   name: document.querySelector("#taskName").value,
+  description: document.querySelector("#taskDescription").value,
+  priority: document.querySelector(
+    "input[type='radio'][class='priorityValue']:checked"
+  ).value,
+  dueDate: document.querySelector("#dueDate").value,
 };
 
 const addTodos = () => {
@@ -23,6 +28,8 @@ const addTodos = () => {
 
 const addTodo = () => {
   //Take the value of the task name , and pass it as a parameter to the createTodo function in another module to create the object.
+
+  console.log(createTodo(todoValues));
   //Display the value in the console.log
 };
 
