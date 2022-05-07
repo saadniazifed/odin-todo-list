@@ -36,7 +36,8 @@ const createTodo = ({ name, description, priority, dueDate }) => {
   const todoObj = todoFactory(name, description, priority, dueDate);
   //Pushing it in the array
   todo.push(todoObj);
-  // console.log(todoObj.getName());
+
+  console.log(todoObj);
   return todoObj;
 };
 

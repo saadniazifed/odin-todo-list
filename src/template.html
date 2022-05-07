@@ -12,7 +12,7 @@
     <input type="text" name="addTaskTitle" id="addTaskTitle" />
     <button class="addTitleBtn">Add Title</button>
 
-    <form action="#" onsubmit="return false">
+    <form action="#" onsubmit="return false" class="todoForm">
       <label for="taskName">Name: </label>
       <input type="text" name="taskName" id="taskName" />
 
@@ -25,29 +25,16 @@
       ></textarea>
 
       <p>Priority:</p>
-      <input
-        type="radio"
-        id="lowPriority"
-        name="lowPriority"
-        value="low"
-        class="priorityValue"
-      />
+      <input type="radio" id="lowPriority" name="priorityValue" value="low" />
       <label for="lowPriority">Low</label><br />
       <input
         type="radio"
         id="mediumPriority"
-        name="mediumPriority"
+        name="priorityValue"
         value="medium"
-        class="priorityValue"
       />
       <label for="mediumPriority">Medium</label><br />
-      <input
-        type="radio"
-        id="highPriority"
-        name="highPriority"
-        value="high"
-        class="priorityValue"
-      />
+      <input type="radio" id="highPriority" name="priorityValue" value="high" />
       <label for="highPriority">High</label>
 
       <label for="dueDate">Due Date</label>

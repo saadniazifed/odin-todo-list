@@ -16,9 +16,7 @@ const addTitle = () => {
 const todoValues = {
   name: document.querySelector("#taskName").value,
   description: document.querySelector("#taskDescription").value,
-  priority: document.querySelector(
-    "input[type='radio'][class='priorityValue']:checked"
-  ).value,
+  // priority: document.querySelectorAll('input[name="priorityValue"]').value,
   dueDate: document.querySelector("#dueDate").value,
 };
 
