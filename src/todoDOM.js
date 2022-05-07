@@ -1,31 +1,29 @@
+import { createTodo } from "./todo";
+
 //Selecting DOM Elements
 const addTitleBtn = document.querySelector(".addTitleBtn");
-const addTitleDiv = document.querySelector(".addTitleDiv");
-const addTaskInDom = document.querySelector(".addTaskInDom");
-const addTodos = document.querySelector(".addTodos");
+const addTasks = document.querySelector(".addTasks");
 
-const addTaskTitle = () => {
-  addTitleBtn.addEventListener("click", addTaskValue);
+const appendTitle = () => {
+  addTitleBtn.addEventListener("click", addTitle);
 };
 
-const addTaskValue = () => {
+const addTitle = () => {
   const addTaskTitle = document.querySelector("#addTaskTitle").value;
-  addTitleDiv.append(addTaskTitle);
+  document.body.append(addTaskTitle);
 };
 
-const addingTodo = () => {
-  addTaskInDom.addEventListener("click", addTodo);
+const todoValues = {
+  name: document.querySelector("#taskName").value,
+};
+
+const addTodos = () => {
+  addTasks.addEventListener("click", addTodo);
 };
 
 const addTodo = () => {
-  const taskName = document.querySelector("#taskName").value;
-  const taskDescription = document.querySelector("#taskDescription").value;
-  const taskPriority = document.querySelector(
-    'input[class="priorityValue"]:checked'
-  ).value;
-  const taskDueDate = document.querySelector("#dueDate").value;
-
-  addTodos.append(taskName, taskDescription, taskPriority, taskDueDate);
+  //Take the value of the task name , and pass it as a parameter to the createTodo function in another module to create the object.
+  //Display the value in the console.log
 };
 
-export { addTaskTitle, addingTodo };
+export { appendTitle, addTodos, todoValues };

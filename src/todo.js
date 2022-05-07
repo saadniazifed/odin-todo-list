@@ -1,3 +1,11 @@
+import {
+  todoDescription,
+  todoDueDate,
+  todoName,
+  todoPriority,
+  todoValues,
+} from "./todoDOM";
+
 const todo = [];
 
 const todoFactory = (name, description, priority, dueDate) => {
@@ -23,19 +31,12 @@ const todoFactory = (name, description, priority, dueDate) => {
   };
 };
 
-const createTodo = () => {
-  const name = "Project One";
-  const description = "Some Description";
-  const priority = "Low";
-  const dueDate = "05/05/2022";
-
+const createTodo = ({ name }) => {
   //Creating the Object
-  const todoObj = todoFactory(name, description, priority, dueDate);
-  const todoObj1 = todoFactory(name, description, priority, dueDate);
-
+  const todoObj = todoFactory(name);
   //Pushing it in the array
   todo.push(todoObj);
-  todo.push(todoObj1);
+  // console.log(todoObj.getName());
 };
 
 const newDetails = {
