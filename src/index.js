@@ -1,5 +1,7 @@
-import { addTodos, appendTitle } from "./todoDOM";
 import "./style.css";
+import { createTodo, deleteTodo, updateTodo, viewDetails } from "./todo";
 
-appendTitle();
-addTodos();
+createTodo();
+updateTodo();
+deleteTodo();
+viewDetails();
