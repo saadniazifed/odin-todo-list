@@ -55,12 +55,12 @@ const getTodoGridBoxes = () => {
 
   const todoValues = getTodoValues();
 
+  const name = todoValues.name;
+  const priority = todoValues.priority;
+
   let editBtn = editButton();
   let deleteBtn = deleteButton();
   let viewBtn = viewTodoButton();
-
-  const name = todoValues.name;
-  const priority = todoValues.priority;
 
   leftSide.append(name);
   rightSide.append(priority, editBtn, deleteBtn, viewBtn);

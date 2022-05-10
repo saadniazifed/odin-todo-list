@@ -1,5 +1,4 @@
 const todo = [];
-const index = 0;
 
 const todoFactory = (name, description, priority, dueDate) => {
   const getName = () => name;
@@ -27,7 +26,6 @@ const todoFactory = (name, description, priority, dueDate) => {
 const createTodo = (name, description, priority, dueDate) => {
   //Creating the Object
   const todoObj = todoFactory(name, description, priority, dueDate);
-
   //Pushing it in the array
   todo.push(todoObj);
   return todoObj;
