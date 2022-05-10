@@ -46,10 +46,6 @@
 /* Styling the Form on body */
 .todoForm {
   border: 3px solid red;
-  /* width: 60%; */
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
 }
 
 /* Add todos grid styling */
@@ -57,4 +53,19 @@
   width: 100%;
   background-color: lightcyan;
   min-height: 15vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainBody {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.rightSide,
+.leftSide {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }

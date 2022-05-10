@@ -1,3 +1,4 @@
+import { createElement } from "./createElements";
 import {
   createTodo,
   deleteTodo,
@@ -21,37 +22,13 @@ const addTodo = () => {
   const addTasks = document.querySelector(".addTasks");
   addTasks.addEventListener("click", () => {
     getTodo();
-    appendTodos();
+    getTodoGridBoxes();
   });
 };
 
 const getTodo = () => {
   createTodo(getTodoValues());
   console.log(todo);
-};
-
-const appendTodos = () => {
-  const addTodosGrid = document.querySelector(".addTodosGrid");
-
-  const todoValues = getTodoValues();
-
-  const name = todoValues.name;
-  const description = todoValues.description;
-  const priority = todoValues.priority;
-  const dueDate = todoValues.dueDate;
-
-  addTodosGrid.append(name, description, priority, dueDate);
-};
-
-const viewTodo = () => {
-  const viewTodo = document.querySelector(".viewDetails");
-  viewTodo.addEventListener("click", () => {
-    getViewDetails();
-  });
-};
-
-const getViewDetails = () => {
-  viewDetails();
 };
 
 const editTodo = () => {
@@ -65,21 +42,57 @@ const getEditDetails = () => {
   updateTodo();
 };
 
-const deleteTodos = () => {
-  const deleteTodo = document.querySelector(".deleteTodo");
-  deleteTodo.addEventListener("click", () => {
-    getDeleteDetails();
-  });
-};
-
-const getDeleteDetails = () => {
-  deleteTodo();
-  removeRow();
-};
-
 function removeRow() {
   const e = document.querySelector(".addTodosGrid");
   e.parentElement.removeChild(e);
 }
 
-export { addTitle, addTodo, viewTodo, editTodo, deleteTodos };
+const getTodoGridBoxes = () => {
+  const addTodosGrid = createElement("div", ["addTodosGrid"], {});
+  const leftSide = createElement("div", ["leftSide"], {});
+  const rightSide = createElement("div", ["rightSide"], {});
+  const mainBody = document.querySelector(".mainBody");
+
+  const todoValues = getTodoValues();
+
+  let editBtn = editButton();
+  let deleteBtn = deleteButton();
+  let viewBtn = viewTodoButton();
+
+  const name = todoValues.name;
+  const priority = todoValues.priority;
+
+  leftSide.append(name);
+  rightSide.append(priority, editBtn, deleteBtn, viewBtn);
+  addTodosGrid.append(leftSide, rightSide);
+  mainBody.appendChild(addTodosGrid);
+};
+
+const editButton = () => {
+  const editBtn = createElement("button", [], {});
+  editBtn.innerText = "Edit";
+  editBtn.addEventListener("click", updateTodo);
+
+  return editBtn;
+};
+
+const deleteButton = () => {
+  const deleteBtn = createElement("button", [], {});
+  deleteBtn.innerText = "Delete";
+  deleteBtn.addEventListener("click", () => {
+    deleteTodo();
+    removeRow();
+  });
+
+  return deleteBtn;
+};
+
+const viewTodoButton = () => {
+  const viewBtn = createElement("button", [], {});
+  viewBtn.innerText = "View Details";
+  viewBtn.addEventListener("click", viewDetails);
+
+  return viewBtn;
+};
+
+export { addTitle, addTodo, editTodo, getTodoGridBoxes };
