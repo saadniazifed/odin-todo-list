@@ -7,4 +7,8 @@ const createElement = (elementType, classes, otherAttributes) => {
   return element;
 };
 
+const todoGridBoxes = () => {
+  const addTodosGrid = createElement("div", ["addTodosGrid"], {});
+};
+
 export { createElement };

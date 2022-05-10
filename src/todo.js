@@ -24,23 +24,24 @@ const todoFactory = (name, description, priority, dueDate) => {
   };
 };
 
-const createTodo = () => {
-  const name = "Project One";
-  const description = "Some Description";
-  const priority = "Low";
-  const dueDate = "05/05/2022";
-
+const createTodo = (name, description, priority, dueDate) => {
   //Creating the Object
   const todoObj = todoFactory(name, description, priority, dueDate);
-  const todoObj1 = todoFactory(name, description, priority, dueDate);
 
   //Pushing it in the array
   todo.push(todoObj);
-  todo.push(todoObj1);
-  console.log(todoObj);
-  console.log(todo);
-  console.log(todoObj.getName());
   return todoObj;
+};
+
+const getTodoValues = () => {
+  const todoValues = {
+    name: document.querySelector("#taskName").value,
+    description: document.querySelector("#taskDescription").value,
+    priority: document.querySelector('input[name="priorityValue"]:checked')
+      .value,
+    dueDate: document.querySelector("#dueDate").value,
+  };
+  return todoValues;
 };
 
 const newDetails = {
@@ -51,7 +52,7 @@ const newDetails = {
 };
 
 const updateTodo = () => {
-  let todoObj = todo[index]; //Access the todoObj
+  let todoObj = todo[index];
   console.log(todoObj.setName(newDetails.name));
   console.log(todoObj.setDescription(newDetails.description));
   console.log(todoObj.setPriority(newDetails.priority));
@@ -66,7 +67,7 @@ const deleteTodo = () => {
 const viewDetails = () => {
   let todoObj = todo[index];
   console.log(todoObj.getName());
-  console.log(todoObj.getDescription());
+  return todoObj;
 };
 
-export { createTodo, updateTodo, deleteTodo, viewDetails };
+export { createTodo, updateTodo, deleteTodo, viewDetails, getTodoValues, todo };

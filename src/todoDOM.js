@@ -1,42 +1,85 @@
-// import { createTodo } from "./todo";
+import {
+  createTodo,
+  deleteTodo,
+  getTodoValues,
+  updateTodo,
+  viewDetails,
+  todo,
+} from "./todo";
 
-// const addTitleBtn = document.querySelector(".addTitleBtn");
-// const addTasks = document.querySelector(".addTasks");
-// const addTodosGrid = document.querySelector(".addTodosGrid");
+const addTitle = () => {
+  const addTitleBtn = document.querySelector(".addTitleBtn");
+  addTitleBtn.addEventListener("click", getTitle);
+};
 
-// const appendTitle = () => {
-//   addTitleBtn.addEventListener("click", addTitle);
-// };
+const getTitle = () => {
+  const addTaskTitle = document.querySelector("#addTaskTitle").value;
+  console.log(addTaskTitle);
+};
 
-// const addTitle = () => {
-//   const addTaskTitle = document.querySelector("#addTaskTitle").value;
-//   document.body.append(addTaskTitle);
-// };
+const addTodo = () => {
+  const addTasks = document.querySelector(".addTasks");
+  addTasks.addEventListener("click", () => {
+    getTodo();
+    appendTodos();
+  });
+};
 
-// const getTodoValues = () => {
-//   const todoValues = {
-//     name: document.querySelector("#taskName").value,
-//     description: document.querySelector("#taskDescription").value,
-//     priority: document.querySelector('input[name="priorityValue"]:checked')
-//       .value,
-//     dueDate: document.querySelector("#dueDate").value,
-//   };
+const getTodo = () => {
+  createTodo(getTodoValues());
+  console.log(todo);
+};
 
-//   return todoValues;
-// };
+const appendTodos = () => {
+  const addTodosGrid = document.querySelector(".addTodosGrid");
 
-// const addTodos = () => {
-//   addTasks.addEventListener("click", addTodo);
-// };
+  const todoValues = getTodoValues();
 
-// const addTodo = () => {
-//   createTodo(getTodoValues());
-//   gridBoxes();
-// };
+  const name = todoValues.name;
+  const description = todoValues.description;
+  const priority = todoValues.priority;
+  const dueDate = todoValues.dueDate;
 
-// const gridBoxes = () => {
-//   const todoValues = getTodoValues();
-//   const name = todoValues.name;
-// };
+  addTodosGrid.append(name, description, priority, dueDate);
+};
 
-// export { appendTitle, addTodos };
+const viewTodo = () => {
+  const viewTodo = document.querySelector(".viewDetails");
+  viewTodo.addEventListener("click", () => {
+    getViewDetails();
+  });
+};
+
+const getViewDetails = () => {
+  viewDetails();
+};
+
+const editTodo = () => {
+  const editTodo = document.querySelector(".editTodo");
+  editTodo.addEventListener("click", () => {
+    getEditDetails();
+  });
+};
+
+const getEditDetails = () => {
+  updateTodo();
+};
+
+const deleteTodos = () => {
+  const deleteTodo = document.querySelector(".deleteTodo");
+  deleteTodo.addEventListener("click", () => {
+    getDeleteDetails();
+  });
+};
+
+const getDeleteDetails = () => {
+  deleteTodo();
+  removeRow();
+};
+
+function removeRow() {
+  const e = document.querySelector(".addTodosGrid");
+  e.parentElement.removeChild(e);
+}
+
+export { addTitle, addTodo, viewTodo, editTodo, deleteTodos };
