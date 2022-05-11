@@ -1,3 +1,4 @@
+//latest push
 import { createElement } from "./createElements";
 import {
   createTodo,
@@ -86,8 +87,8 @@ const deleteButton = () => {
   const deleteBtn = createElement("button", [], {});
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", (e) => {
-    deleteTodo(e.target.getAttribute("index"));
-    removeRow(e.target.getAttribute("index"));
+    deleteTodo(e.currentTarget.parentNode.parentNode.getAttribute("index"));
+    removeRow(e.currentTarget.parentNode.parentNode.getAttribute("index"));
   });
 
   return deleteBtn;
