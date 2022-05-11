@@ -62,9 +62,6 @@ const updateTodo = () => {
 
 const deleteTodo = (index) => {
   // const deleteTask = todo.splice(index, 1);
-  // // console.log(todo);
-  // // console.log(todo[index]);
-  // return deleteTask;
 };
 
 const viewDetails = () => {

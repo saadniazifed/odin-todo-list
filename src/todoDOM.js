@@ -22,7 +22,7 @@ const addTodo = () => {
   const addTasks = document.querySelector(".addTasks");
   addTasks.addEventListener("click", () => {
     getTodo();
-    getTodoGridBoxes();
+    todoBox();
   });
 };
 
@@ -43,16 +43,15 @@ const getEditDetails = () => {
 };
 
 function removeRow(index) {
-  // const mainBody = document.querySelector(".mainBody");
-  // const addTodosGrid = document.querySelector(".addTodosGrid");
-  // const childElement = addTodosGrid.index;
-  // mainBody.remove(childElement);
+  console.log(index);
+  //Take the parameter of the index value from dataset.index as it is in the `todoBox function`
+  //Use the value and add some DOM method to remove the todo from the DOM side.
 }
 
 const todoBox = () => {
+  const mainBody = document.querySelector(".mainBody");
   const leftSide = createElement("div", ["leftSide"], {});
   const rightSide = createElement("div", ["rightSide"], {});
-  const mainBody = document.querySelector(".mainBody");
 
   const todoCounter = mainBody.childElementCount;
   const addTodosGrid = createElement("div", ["addTodosGrid"], {
@@ -60,6 +59,7 @@ const todoBox = () => {
   });
 
   const todoValues = getTodoValues();
+  console.log(addTodosGrid.dataset.index); //the dynamic index value
 
   const name = todoValues.name;
   const priority = todoValues.priority;
@@ -82,13 +82,12 @@ const editButton = () => {
   return editBtn;
 };
 
-const deleteButton = (index) => {
-  console.log(index);
+const deleteButton = () => {
   const deleteBtn = createElement("button", [], {});
   deleteBtn.innerText = "Delete";
-  deleteBtn.addEventListener("click", () => {
-    deleteTodo();
-    removeRow();
+  deleteBtn.addEventListener("click", (e) => {
+    deleteTodo(e.target.getAttribute("index"));
+    removeRow(e.target.getAttribute("index"));
   });
 
   return deleteBtn;
