@@ -60,9 +60,11 @@ const updateTodo = () => {
   console.log(todoObj.setDueDate(newDetails.dueDate));
 };
 
-const deleteTodo = () => {
+const deleteTodo = (index) => {
   // const deleteTask = todo.splice(index, 1);
-  // console.log(todo);
+  // // console.log(todo);
+  // // console.log(todo[index]);
+  // return deleteTask;
 };
 
 const viewDetails = () => {

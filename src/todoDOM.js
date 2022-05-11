@@ -43,22 +43,21 @@ const getEditDetails = () => {
 };
 
 function removeRow(index) {
-  console.log(index);
+  // const mainBody = document.querySelector(".mainBody");
+  // const addTodosGrid = document.querySelector(".addTodosGrid");
+  // const childElement = addTodosGrid.index;
+  // mainBody.remove(childElement);
 }
 
-const getTodoGridBoxes = () => {
+const todoBox = () => {
   const leftSide = createElement("div", ["leftSide"], {});
   const rightSide = createElement("div", ["rightSide"], {});
   const mainBody = document.querySelector(".mainBody");
+
   const todoCounter = mainBody.childElementCount;
   const addTodosGrid = createElement("div", ["addTodosGrid"], {
     "data-index": todoCounter,
   });
-
-  console.log(todoCounter); //this is working
-  console.log(addTodosGrid); //this is working
-  console.log(addTodosGrid.dataset); //even this is working. Shows DOMStringmap
-  console.log(addTodosGrid.dataset.index);
 
   const todoValues = getTodoValues();
 
@@ -84,11 +83,12 @@ const editButton = () => {
 };
 
 const deleteButton = (index) => {
+  console.log(index);
   const deleteBtn = createElement("button", [], {});
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", () => {
     deleteTodo();
-    removeRow(index);
+    removeRow();
   });
 
   return deleteBtn;
@@ -102,4 +102,4 @@ const viewTodoButton = () => {
   return viewBtn;
 };
 
-export { addTitle, addTodo, editTodo, getTodoGridBoxes };
+export { addTitle, addTodo, editTodo, todoBox };
