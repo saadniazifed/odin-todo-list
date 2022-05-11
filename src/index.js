@@ -1,8 +1,5 @@
 import "./style.css";
-import { addTitle, addTodo, editTodo, viewTodo } from "./todoDOM";
+import { addTitle, addTodo } from "./todoDOM";
 
 addTitle();
 addTodo();
-// viewTodo();
-// editTodo();
-// deleteTodos();

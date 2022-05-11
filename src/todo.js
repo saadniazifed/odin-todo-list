@@ -1,10 +1,11 @@
 const todo = [];
 
-const todoFactory = (name, description, priority, dueDate) => {
+const todoFactory = (name, description, priority, dueDate, index) => {
   const getName = () => name;
   const getDescription = () => description;
   const getPriority = () => priority;
   const getDueDate = () => dueDate;
+  const getIndex = () => index;
 
   const setName = (newName) => (name = newName);
   const setDescription = (newDescription) => (description = newDescription);
@@ -16,6 +17,7 @@ const todoFactory = (name, description, priority, dueDate) => {
     getDescription,
     getPriority,
     getDueDate,
+    getIndex,
     setName,
     setDescription,
     setPriority,
@@ -23,11 +25,12 @@ const todoFactory = (name, description, priority, dueDate) => {
   };
 };
 
-const createTodo = (name, description, priority, dueDate) => {
+const createTodo = (name, description, priority, dueDate, index) => {
   //Creating the Object
-  const todoObj = todoFactory(name, description, priority, dueDate);
+  const todoObj = todoFactory(name, description, priority, dueDate, index);
   //Pushing it in the array
   todo.push(todoObj);
+  console.log(todoObj.getIndex());
   return todoObj;
 };
 
@@ -58,8 +61,8 @@ const updateTodo = () => {
 };
 
 const deleteTodo = () => {
-  const deleteTask = todo.splice(index, 1);
-  console.log(todo);
+  // const deleteTask = todo.splice(index, 1);
+  // console.log(todo);
 };
 
 const viewDetails = () => {
