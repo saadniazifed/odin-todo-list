@@ -1,13 +1,6 @@
 //latest push
 import { createElement } from "./createElements";
-import {
-  createTodo,
-  deleteTodo,
-  getTodoValues,
-  updateTodo,
-  viewDetails,
-  todo,
-} from "./todo";
+import { createTodo, deleteTodo, updateTodo, viewDetails } from "./todo";
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
@@ -28,7 +21,13 @@ const addTodo = () => {
 };
 
 const getTodo = () => {
-  createTodo(getTodoValues());
+  const todoObj = getTodoValues();
+  createTodo(
+    todoObj.name,
+    todoObj.description,
+    todoObj.priority,
+    todoObj.dueDate
+  );
 };
 
 const editTodo = () => {
@@ -49,7 +48,6 @@ function removeRow(index) {
 }
 
 const todoBox = () => {
-  console.log(todo);
   const mainBody = document.querySelector(".mainBody");
   const leftSide = createElement("div", ["leftSide"], {});
   const rightSide = createElement("div", ["rightSide"], {});
@@ -91,6 +89,7 @@ const deleteButton = () => {
     const index = todoBox.dataset.index;
     removeRow(index);
     deleteTodo(index);
+    updateIndex(index);
   });
 
   return deleteBtn;
@@ -103,5 +102,24 @@ const viewTodoButton = () => {
 
   return viewBtn;
 };
+
+const getTodoValues = () => {
+  const todoValues = {
+    name: document.querySelector("#taskName").value,
+    description: document.querySelector("#taskDescription").value,
+    priority: document.querySelector('input[name="priorityValue"]:checked')
+      .value,
+    dueDate: document.querySelector("#dueDate").value,
+  };
+
+  return todoValues;
+};
+
+function updateIndex() {
+  const tasks = document.querySelectorAll(".todoBoxes");
+  tasks.forEach((task, index) => {
+    task.dataset.index = index;
+  });
+}
 
 export { addTitle, addTodo, editTodo, todoBox };

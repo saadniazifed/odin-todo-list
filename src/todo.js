@@ -25,21 +25,12 @@ const todoFactory = (name, description, priority, dueDate, index) => {
   };
 };
 
-const createTodo = (name, description, priority, dueDate, index) => {
-  const todoObj = todoFactory(name, description, priority, dueDate, index);
+const createTodo = (name, description, priority, dueDate) => {
+  const todoObj = todoFactory(name, description, priority, dueDate);
   todo.push(todoObj);
+  console.log(todo[0].getName());
+  console.log(todo[0].getDescription());
   return todoObj;
-};
-
-const getTodoValues = () => {
-  const todoValues = {
-    name: document.querySelector("#taskName").value,
-    description: document.querySelector("#taskDescription").value,
-    priority: document.querySelector('input[name="priorityValue"]:checked')
-      .value,
-    dueDate: document.querySelector("#dueDate").value,
-  };
-  return todoValues;
 };
 
 const newDetails = {
@@ -67,4 +58,4 @@ const viewDetails = () => {
   return todoObj;
 };
 
-export { createTodo, updateTodo, deleteTodo, viewDetails, getTodoValues, todo };
+export { createTodo, updateTodo, deleteTodo, viewDetails };
