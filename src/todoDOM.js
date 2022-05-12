@@ -54,7 +54,7 @@ const todoBox = () => {
   const leftSide = createElement("div", ["leftSide"], {});
   const rightSide = createElement("div", ["rightSide"], {});
 
-  const todoCounter = mainBody.childElementCount;
+  const todoCounter = mainBody.childElementCount - 1;
   const todoBoxes = createElement("div", ["todoBoxes"], {
     "data-index": todoCounter,
   });
