@@ -43,9 +43,9 @@ const getEditDetails = () => {
 };
 
 function removeRow(index) {
-  // const indexValue = document.querySelector(`[data-index="${index}"]`);
-  // const mainBody = document.querySelector(".mainBody");
-  // mainBody.removeChild(indexValue);
+  const indexValue = document.querySelector(`[data-index="${index}"]`);
+  const mainBody = document.querySelector(".mainBody");
+  mainBody.removeChild(indexValue);
 }
 
 const todoBox = () => {
