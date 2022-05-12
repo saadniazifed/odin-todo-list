@@ -29,7 +29,6 @@ const addTodo = () => {
 
 const getTodo = () => {
   createTodo(getTodoValues());
-  console.log(todo);
 };
 
 const editTodo = () => {
@@ -44,23 +43,24 @@ const getEditDetails = () => {
 };
 
 function removeRow(index) {
-  console.log(index);
-  //Take the parameter of the index value from dataset.index as it is in the `todoBox function`
-  //Use the value and add some DOM method to remove the todo from the DOM side.
+  // const indexValue = document.querySelector(`[data-index="${index}"]`);
+  // const mainBody = document.querySelector(".mainBody");
+  // mainBody.removeChild(indexValue);
 }
 
 const todoBox = () => {
+  console.log(todo);
   const mainBody = document.querySelector(".mainBody");
   const leftSide = createElement("div", ["leftSide"], {});
   const rightSide = createElement("div", ["rightSide"], {});
 
   const todoCounter = mainBody.childElementCount;
-  const addTodosGrid = createElement("div", ["addTodosGrid"], {
+  const todoBoxes = createElement("div", ["todoBoxes"], {
     "data-index": todoCounter,
   });
 
   const todoValues = getTodoValues();
-  console.log(addTodosGrid.dataset.index); //the dynamic index value
+  // console.log(todoBoxes.dataset.index); //the dynamic index value
 
   const name = todoValues.name;
   const priority = todoValues.priority;
@@ -71,8 +71,8 @@ const todoBox = () => {
 
   leftSide.append(name);
   rightSide.append(priority, editBtn, deleteBtn, viewBtn);
-  addTodosGrid.append(leftSide, rightSide);
-  mainBody.appendChild(addTodosGrid);
+  todoBoxes.append(leftSide, rightSide);
+  mainBody.appendChild(todoBoxes);
 };
 
 const editButton = () => {
@@ -87,8 +87,10 @@ const deleteButton = () => {
   const deleteBtn = createElement("button", [], {});
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", (e) => {
-    deleteTodo(e.currentTarget.parentNode.parentNode.getAttribute("index"));
-    removeRow(e.currentTarget.parentNode.parentNode.getAttribute("index"));
+    const todoBox = e.target.closest(".todoBoxes");
+    const index = todoBox.dataset.index;
+    removeRow(index);
+    deleteTodo(index);
   });
 
   return deleteBtn;

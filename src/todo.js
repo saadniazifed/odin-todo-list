@@ -30,7 +30,6 @@ const createTodo = (name, description, priority, dueDate, index) => {
   const todoObj = todoFactory(name, description, priority, dueDate, index);
   //Pushing it in the array
   todo.push(todoObj);
-  console.log(todoObj.getIndex());
   return todoObj;
 };
 
@@ -61,7 +60,8 @@ const updateTodo = () => {
 };
 
 const deleteTodo = (index) => {
-  // const deleteTask = todo.splice(index, 1);
+  const deleteTask = todo.splice(index, 1);
+  return deleteTask;
 };
 
 const viewDetails = () => {

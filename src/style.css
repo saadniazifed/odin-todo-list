@@ -49,7 +49,7 @@
 }
 
 /* Add todos grid styling */
-.addTodosGrid {
+.todoBoxes {
   width: 100%;
   background-color: lightcyan;
   min-height: 15vh;
