@@ -98,7 +98,11 @@ const deleteButton = () => {
 const viewTodoButton = () => {
   const viewBtn = createElement("button", [], {});
   viewBtn.innerText = "View Details";
-  viewBtn.addEventListener("click", viewDetails);
+  viewBtn.addEventListener("click", (e) => {
+    const todoBox = e.target.closest(".todoBoxes");
+    const index = todoBox.dataset.index;
+    viewDetails(index);
+  });
 
   return viewBtn;
 };
@@ -122,4 +126,4 @@ function updateIndex() {
   });
 }
 
-export { addTitle, addTodo, editTodo, todoBox };
+export { addTitle, addTodo, editTodo, todoBox, viewTodoButton };

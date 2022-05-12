@@ -52,9 +52,10 @@ const deleteTodo = (index) => {
   todo.splice(index, 1);
 };
 
-const viewDetails = () => {
+const viewDetails = (index) => {
   let todoObj = todo[index];
   console.log(todoObj.getName());
+  console.log(todoObj.getDescription());
   return todoObj;
 };
 
