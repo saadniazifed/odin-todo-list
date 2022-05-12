@@ -60,8 +60,8 @@ const updateTodo = () => {
 };
 
 const deleteTodo = (index) => {
-  const deleteTask = todo.splice(index, 1);
-  return deleteTask;
+  todo.splice(index, 1);
+  console.log(todo);
 };
 
 const viewDetails = () => {
