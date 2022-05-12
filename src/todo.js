@@ -1,3 +1,5 @@
+import { getNewDetails } from "./todoDOM";
+
 const todo = [];
 
 const todoFactory = (name, description, priority, dueDate, index) => {
@@ -28,24 +30,16 @@ const todoFactory = (name, description, priority, dueDate, index) => {
 const createTodo = (name, description, priority, dueDate) => {
   const todoObj = todoFactory(name, description, priority, dueDate);
   todo.push(todoObj);
-  console.log(todo[0].getName());
-  console.log(todo[0].getDescription());
   return todoObj;
 };
 
-const newDetails = {
-  name: "new Name",
-  description: "New Description",
-  priority: "New Priority",
-  dueDate: "New Date",
-};
-
-const updateTodo = () => {
+const updateTodo = (index) => {
   let todoObj = todo[index];
+  const newDetails = getNewDetails();
   console.log(todoObj.setName(newDetails.name));
-  console.log(todoObj.setDescription(newDetails.description));
-  console.log(todoObj.setPriority(newDetails.priority));
-  console.log(todoObj.setDueDate(newDetails.dueDate));
+  console.log(todoObj.setName(newDetails.description));
+  console.log(todoObj.setName(newDetails.priority));
+  console.log(todoObj.setName(newDetails.dueDate));
 };
 
 const deleteTodo = (index) => {

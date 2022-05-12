@@ -30,17 +30,6 @@ const getTodo = () => {
   );
 };
 
-const editTodo = () => {
-  const editTodo = document.querySelector(".editTodo");
-  editTodo.addEventListener("click", () => {
-    getEditDetails();
-  });
-};
-
-const getEditDetails = () => {
-  updateTodo();
-};
-
 function removeRow(index) {
   const indexValue = document.querySelector(`[data-index="${index}"]`);
   const mainBody = document.querySelector(".mainBody");
@@ -58,7 +47,6 @@ const todoBox = () => {
   });
 
   const todoValues = getTodoValues();
-  // console.log(todoBoxes.dataset.index); //the dynamic index value
 
   const name = todoValues.name;
   const priority = todoValues.priority;
@@ -76,8 +64,11 @@ const todoBox = () => {
 const editButton = () => {
   const editBtn = createElement("button", [], {});
   editBtn.innerText = "Edit";
-  editBtn.addEventListener("click", updateTodo);
-
+  editBtn.addEventListener("click", (e) => {
+    const todoBox = e.target.closest(".todoBoxes");
+    const index = todoBox.dataset.index;
+    updateTodo(index);
+  });
   return editBtn;
 };
 
@@ -119,6 +110,18 @@ const getTodoValues = () => {
   return todoValues;
 };
 
+const getNewDetails = () => {
+  const newDetails = {
+    name: document.querySelector("#taskName").value,
+    description: document.querySelector("#taskDescription").value,
+    priority: document.querySelector('input[name="priorityValue"]:checked')
+      .value,
+    dueDate: document.querySelector("#dueDate").value,
+  };
+
+  return newDetails;
+};
+
 function updateIndex() {
   const tasks = document.querySelectorAll(".todoBoxes");
   tasks.forEach((task, index) => {
@@ -126,4 +129,11 @@ function updateIndex() {
   });
 }
 
-export { addTitle, addTodo, editTodo, todoBox, viewTodoButton };
+export {
+  addTitle,
+  addTodo,
+  todoBox,
+  viewTodoButton,
+  getNewDetails,
+  editButton,
+};
