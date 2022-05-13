@@ -1,14 +1,10 @@
 import { createElement } from "./createElements";
+import { createProjects } from "./project";
 import { createTodo, deleteTodo, updateTodo } from "./todo";
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
-  addTitleBtn.addEventListener("click", getTitle);
-};
-
-const getTitle = () => {
-  const addTaskTitle = document.querySelector("#addTaskTitle").value;
-  console.log(addTaskTitle);
+  addTitleBtn.addEventListener("click", getProjectValues);
 };
 
 const addTodo = () => {
@@ -144,6 +140,11 @@ const getNewDetails = () => {
   };
 
   return newDetails;
+};
+
+const getProjectValues = () => {
+  const todoProj = document.querySelector("#addTaskTitle").value;
+  createProjects(todoProj);
 };
 
 function updateIndex() {

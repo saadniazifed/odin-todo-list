@@ -1,6 +1,6 @@
 import { getNewDetails } from "./todoDOM";
 
-const todo = [];
+// const todo = [];
 
 const todoFactory = (name, description, priority, dueDate, index) => {
   const getName = () => name;
