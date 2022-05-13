@@ -1,6 +1,5 @@
-//latest push
 import { createElement } from "./createElements";
-import { createTodo, deleteTodo, updateTodo, viewDetails } from "./todo";
+import { createTodo, deleteTodo, updateTodo } from "./todo";
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
@@ -53,16 +52,15 @@ const todoBox = () => {
 
   let editBtn = editButton();
   let deleteBtn = deleteButton();
-  let viewBtn = viewTodoButton();
 
   leftSide.append(name);
-  rightSide.append(priority, editBtn, deleteBtn, viewBtn);
+  rightSide.append(priority, editBtn, deleteBtn);
   todoBoxes.append(leftSide, rightSide);
   mainBody.appendChild(todoBoxes);
 };
 
 const editButton = () => {
-  const editBtn = createElement("button", [], {});
+  const editBtn = createElement("button", ["editBtn"], {});
   editBtn.innerText = "Edit";
 
   editBtn.addEventListener("click", (e) => {
@@ -71,6 +69,7 @@ const editButton = () => {
     updateTodo(index);
     editTodoBox(index);
   });
+
   return editBtn;
 };
 
@@ -102,10 +101,9 @@ const addEditedValues = () => {
 
   let editBtn = editButton();
   let deleteBtn = deleteButton();
-  let viewBtn = viewTodoButton();
 
   leftSide.append(name);
-  rightSide.append(priority, editBtn, deleteBtn, viewBtn);
+  rightSide.append(priority, editBtn, deleteBtn);
   todoBoxes.append(leftSide, rightSide);
   mainBody.appendChild(todoBoxes);
 };
@@ -122,18 +120,6 @@ const deleteButton = () => {
   });
 
   return deleteBtn;
-};
-
-const viewTodoButton = () => {
-  const viewBtn = createElement("button", [], {});
-  viewBtn.innerText = "View Details";
-  viewBtn.addEventListener("click", (e) => {
-    const todoBox = e.target.closest(".todoBoxes");
-    const index = todoBox.dataset.index;
-    viewDetails(index);
-  });
-
-  return viewBtn;
 };
 
 const getTodoValues = () => {
@@ -167,11 +153,4 @@ function updateIndex() {
   });
 }
 
-export {
-  addTitle,
-  addTodo,
-  todoBox,
-  viewTodoButton,
-  getNewDetails,
-  editButton,
-};
+export { addTitle, addTodo, todoBox, getNewDetails, editButton };

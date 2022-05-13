@@ -73,3 +73,7 @@
 .addTitleDiv {
   visibility: hidden;
 }
+
+.editBtn {
+  padding: 3px;
+}

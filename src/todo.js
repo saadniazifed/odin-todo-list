@@ -37,20 +37,13 @@ const updateTodo = (index) => {
   let todoObj = todo[index];
   const newDetails = getNewDetails();
   todoObj.setName(newDetails.name);
-  todoObj.setName(newDetails.description);
-  todoObj.setName(newDetails.priority);
-  todoObj.setName(newDetails.dueDate);
+  todoObj.setDescription(newDetails.description);
+  todoObj.setPriority(newDetails.priority);
+  todoObj.setDueDate(newDetails.dueDate);
 };
 
 const deleteTodo = (index) => {
   todo.splice(index, 1);
 };
 
-const viewDetails = (index) => {
-  let todoObj = todo[index];
-  console.log(todoObj.getName());
-  console.log(todoObj.getDescription());
-  return todoObj;
-};
-
-export { createTodo, updateTodo, deleteTodo, viewDetails };
+export { createTodo, updateTodo, deleteTodo };

@@ -1,13 +1,6 @@
 import "./style.css";
-import {
-  addTitle,
-  addTodo,
-  editButton,
-  editTodo,
-  viewTodoButton,
-} from "./todoDOM";
+import { addTitle, addTodo, editButton } from "./todoDOM";
 
 addTitle();
 addTodo();
-viewTodoButton();
 editButton();
