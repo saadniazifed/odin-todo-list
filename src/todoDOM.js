@@ -64,6 +64,7 @@ const todoBox = () => {
 const editButton = () => {
   const editBtn = createElement("button", [], {});
   editBtn.innerText = "Edit";
+
   editBtn.addEventListener("click", (e) => {
     const todoBox = e.target.closest(".todoBoxes");
     const index = todoBox.dataset.index;
