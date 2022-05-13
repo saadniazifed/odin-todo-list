@@ -36,10 +36,10 @@ const createTodo = (name, description, priority, dueDate) => {
 const updateTodo = (index) => {
   let todoObj = todo[index];
   const newDetails = getNewDetails();
-  console.log(todoObj.setName(newDetails.name));
-  console.log(todoObj.setName(newDetails.description));
-  console.log(todoObj.setName(newDetails.priority));
-  console.log(todoObj.setName(newDetails.dueDate));
+  todoObj.setName(newDetails.name);
+  todoObj.setName(newDetails.description);
+  todoObj.setName(newDetails.priority);
+  todoObj.setName(newDetails.dueDate);
 };
 
 const deleteTodo = (index) => {

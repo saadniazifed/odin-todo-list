@@ -68,8 +68,45 @@ const editButton = () => {
     const todoBox = e.target.closest(".todoBoxes");
     const index = todoBox.dataset.index;
     updateTodo(index);
+    editTodoBox(index);
   });
   return editBtn;
+};
+
+const editTodoBox = (index) => {
+  addEditedValues();
+  removeElements(index);
+};
+
+const removeElements = (index) => {
+  var div = document.querySelector(`[data-index="${index}"]`);
+  const mainBody = document.querySelector(".mainBody");
+  mainBody.removeChild(div);
+};
+
+const addEditedValues = () => {
+  const mainBody = document.querySelector(".mainBody");
+  const leftSide = createElement("div", ["leftSide"], {});
+  const rightSide = createElement("div", ["rightSide"], {});
+
+  const todoCounter = mainBody.childElementCount - 1;
+  const todoBoxes = createElement("div", ["todoBoxes"], {
+    "data-index": todoCounter,
+  });
+
+  const todoValues = getNewDetails();
+
+  const name = todoValues.name;
+  const priority = todoValues.priority;
+
+  let editBtn = editButton();
+  let deleteBtn = deleteButton();
+  let viewBtn = viewTodoButton();
+
+  leftSide.append(name);
+  rightSide.append(priority, editBtn, deleteBtn, viewBtn);
+  todoBoxes.append(leftSide, rightSide);
+  mainBody.appendChild(todoBoxes);
 };
 
 const deleteButton = () => {
