@@ -4,7 +4,12 @@ import { createTodo, deleteTodo, updateTodo } from "./todo";
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
-  addTitleBtn.addEventListener("click", getProjectValues);
+  addTitleBtn.addEventListener("click", getProjectTitle);
+};
+
+const getProjectTitle = () => {
+  const todoProj = document.querySelector("#addTaskTitle").value;
+  createProjects(todoProj);
 };
 
 const addTodo = () => {
@@ -140,11 +145,6 @@ const getNewDetails = () => {
   };
 
   return newDetails;
-};
-
-const getProjectValues = () => {
-  const todoProj = document.querySelector("#addTaskTitle").value;
-  createProjects(todoProj);
 };
 
 function updateIndex() {
