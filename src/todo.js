@@ -1,4 +1,4 @@
-import { createProjects } from "./project";
+import { createProjects, getProjects } from "./project";
 import { getNewDetails } from "./todoDOM";
 
 // const todo = [];
@@ -30,7 +30,11 @@ const todoFactory = (name, description, priority, dueDate, index) => {
 
 const createTodo = (name, description, priority, dueDate) => {
   const todoObj = todoFactory(name, description, priority, dueDate);
-  //Add details here.
+  const projects = getProjects();
+  //Getting the correct todo array
+  const todo = projects[0].getTodos();
+  console.log(todo);
+  console.log(projects);
 };
 
 const updateTodo = (index) => {

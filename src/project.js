@@ -20,8 +20,8 @@ const createProject = (name) => {
 
 const createProjects = (name) => {
   const todoProject = createProject(name);
-  createTodo(todoProject);
   projects.push(todoProject);
+  console.log(projects);
 };
 
 // Allow the todo module to get the projects array
