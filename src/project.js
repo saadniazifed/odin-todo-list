@@ -1,6 +1,7 @@
-import { createTodo } from "./todo";
+import { todoFactory } from "./todo";
+import { getTodoValues } from "./todoDOM";
 
-const projects = [];
+let projects = [];
 
 const createProject = (name) => {
   let todos = [];
@@ -9,9 +10,30 @@ const createProject = (name) => {
 
   const getName = () => name;
 
+  const addTodo = (name, description, priority, dueDate) => {
+    const todoObj = todoFactory(name, description, priority, dueDate);
+    todos.push(todoObj);
+  };
+
+  const updateTodo = (index) => {
+    let todoObj = todos[index];
+    const newDetails = getTodoValues();
+    todoObj.getName(newDetails.name);
+    todoObj.getDescription(newDetails.description);
+    todoObj.getPriority(newDetails.priority);
+    todoObj.getDueDate(newDetails.dueDate);
+  };
+
+  const deleteTodo = (index) => {
+    todos.splice(index, 1);
+  };
+
   const setTodos = (newTodos) => (todos = newTodos);
 
   return {
+    addTodo,
+    updateTodo,
+    deleteTodo,
     getTodos,
     setTodos,
     getName,
