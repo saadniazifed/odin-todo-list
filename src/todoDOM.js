@@ -1,9 +1,14 @@
 import { createElement } from "./createElements";
-import { createProjects, getProjects } from "./project";
+import { createProjects, getProjects, setProjects } from "./project";
+
+let projectIndex;
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
-  addTitleBtn.addEventListener("click", getProjectTitle);
+  addTitleBtn.addEventListener("click", () => {
+    getProjectTitle();
+    renderProjects();
+  });
 };
 
 const getProjectTitle = () => {
@@ -11,12 +16,43 @@ const getProjectTitle = () => {
   createProjects(todoProj);
 };
 
+const renderProjects = () => {
+  const projectDiv = document.querySelector(".projectDiv");
+  projectDiv.innerHTML = "";
+
+  const projects = getProjects();
+  projects.forEach((project, index) => {
+    const projectName = createElement("div", [], {
+      "data-project-index": index,
+    });
+    projectName.textContent = project.getName();
+    projectName.addEventListener("click", (e) => {
+      projectIndex = e.target.dataset.projectIndex;
+      renderTodos(getProjects()[projectIndex].getTodos());
+    });
+
+    // append the element
+    projectDiv.append(projectName);
+  });
+};
 const addTodo = () => {
   const addTasks = document.querySelector(".addTasks");
   addTasks.addEventListener("click", () => {
-    const project = getProjects();
-    project.addTodo;
-    console.log(project);
+    const projects = getProjects();
+
+    // console.log to debug
+    console.log(projects);
+    console.log(projectIndex);
+    console.log(projects[projectIndex]);
+
+    projects[projectIndex].addTodo(
+      getTodoValues().name,
+      getTodoValues().description,
+      getTodoValues().priority,
+      getTodoValues().dueDate
+    );
+    setProjects(projects);
+    renderTodos(getProjects()[projectIndex].getTodos());
   });
 };
 
@@ -72,6 +108,9 @@ function updateIndex() {
 }
 
 function renderTodos(todos) {
+  let todoContainer = document.querySelector(".todoContainer");
+  todoContainer.innerHTML = "";
+
   todos.forEach((todo, index) => {
     const mainBody = document.querySelector(".mainBody");
     const leftSide = createElement("div", ["leftSide"], {});
@@ -90,7 +129,7 @@ function renderTodos(todos) {
     leftSide.append(name);
     rightSide.append(priority, editBtn, deleteBtn);
     todoBoxes.append(leftSide, rightSide);
-    mainBody.appendChild(todoBoxes);
+    todoContainer.append(todoBoxes);
   });
 }
 

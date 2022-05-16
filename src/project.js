@@ -15,13 +15,12 @@ const createProject = (name) => {
     todos.push(todoObj);
   };
 
-  const updateTodo = (index) => {
+  const updateTodo = (index, newDetails) => {
     let todoObj = todos[index];
-    const newDetails = getTodoValues();
-    todoObj.getName(newDetails.name);
-    todoObj.getDescription(newDetails.description);
-    todoObj.getPriority(newDetails.priority);
-    todoObj.getDueDate(newDetails.dueDate);
+    todoObj.setName(newDetails.name);
+    todoObj.setDescription(newDetails.description);
+    todoObj.setPriority(newDetails.priority);
+    todoObj.setDueDate(newDetails.dueDate);
   };
 
   const deleteTodo = (index) => {
@@ -43,7 +42,7 @@ const createProject = (name) => {
 const createProjects = (name) => {
   const todoProject = createProject(name);
   projects.push(todoProject);
-  console.log(projects);
+  // console.log(projects);
 };
 
 // Allow the todo module to get the projects array
