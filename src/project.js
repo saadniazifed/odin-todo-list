@@ -1,5 +1,4 @@
 import { todoFactory } from "./todo";
-import { getTodoValues } from "./todoDOM";
 
 let projects = [];
 
@@ -23,16 +22,19 @@ const createProject = (name) => {
     todoObj.setDueDate(newDetails.dueDate);
   };
 
-  const deleteTodo = (index) => {
-    todos.splice(index, 1);
-  };
+  // const deleteFromArray = (e) => {
+  //   const todoBox = e.target.closest(".todoBoxes");
+  //   const index = todoBox.dataset.index;
+  //   console.log(index);
+  //   // todos.splice(index, 1);
+  // };
 
   const setTodos = (newTodos) => (todos = newTodos);
 
   return {
     addTodo,
     updateTodo,
-    deleteTodo,
+    // deleteFromArray,
     getTodos,
     setTodos,
     getName,
@@ -42,7 +44,6 @@ const createProject = (name) => {
 const createProjects = (name) => {
   const todoProject = createProject(name);
   projects.push(todoProject);
-  // console.log(projects);
 };
 
 // Allow the todo module to get the projects array

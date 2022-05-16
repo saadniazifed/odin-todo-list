@@ -35,15 +35,11 @@ const renderProjects = () => {
     projectDiv.append(projectName);
   });
 };
+
 const addTodo = () => {
   const addTasks = document.querySelector(".addTasks");
   addTasks.addEventListener("click", () => {
     const projects = getProjects();
-
-    // console.log to debug
-    console.log(projects);
-    console.log(projectIndex);
-    console.log(projects[projectIndex]);
 
     projects[projectIndex].addTodo(
       getTodoValues().name,
@@ -56,16 +52,13 @@ const addTodo = () => {
   });
 };
 
-function removeRow(index) {
-  const indexValue = document.querySelector(`[data-index="${index}"]`);
-  const mainBody = document.querySelector(".mainBody");
-  mainBody.removeChild(indexValue);
-}
+const deleteFromDOM = () => {
+  //
+};
 
 const editButton = () => {
   const editBtn = createElement("button", ["editBtn"], {});
   editBtn.innerText = "Edit";
-
   editBtn.addEventListener("click", (e) => {
     const todoBox = e.target.closest(".todoBoxes");
     const index = todoBox.dataset.index;
@@ -75,14 +68,19 @@ const editButton = () => {
 };
 
 const deleteButton = () => {
+  const todoContainer = document.querySelector(".todContainer");
   const deleteBtn = createElement("button", [], {});
   deleteBtn.innerText = "Delete";
+  const todos = getProjects();
+
   deleteBtn.addEventListener("click", (e) => {
     const todoBox = e.target.closest(".todoBoxes");
     const index = todoBox.dataset.index;
-    // removeRow(index);
-    // deleteTodo(index);
-    // updateIndex(index);
+    todos.splice(index, 1);
+
+    const indexValue = document.querySelector(`[data-index="${index}"]`);
+    const todoContainer = document.querySelector(".todoContainer");
+    todoContainer.removeChild(indexValue);
   });
 
   return deleteBtn;
@@ -100,19 +98,11 @@ const getTodoValues = () => {
   return todoValues;
 };
 
-function updateIndex() {
-  const tasks = document.querySelectorAll(".todoBoxes");
-  tasks.forEach((task, index) => {
-    task.dataset.index = index;
-  });
-}
-
 function renderTodos(todos) {
   let todoContainer = document.querySelector(".todoContainer");
   todoContainer.innerHTML = "";
 
   todos.forEach((todo, index) => {
-    const mainBody = document.querySelector(".mainBody");
     const leftSide = createElement("div", ["leftSide"], {});
     const rightSide = createElement("div", ["rightSide"], {});
     // create element and append to main body
