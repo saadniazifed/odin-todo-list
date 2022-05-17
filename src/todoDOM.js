@@ -1,5 +1,10 @@
 import { createElement } from "./createElements";
-import { createProjects, getProjects, setProjects } from "./project";
+import {
+  createProjects,
+  getProjects,
+  setProjects,
+  deleteFromArray,
+} from "./project";
 
 let projectIndex; //Project Array index.
 
@@ -56,12 +61,18 @@ const editButton = () => {
   const editBtn = createElement("button", ["editBtn"], {});
   editBtn.innerText = "Edit";
   editBtn.addEventListener("click", (e) => {
-    const projects = getProjects(); //getting the project array
-    const todoBox = e.target.closest(".todoBoxes");
-    const index = todoBox.dataset.index; //getting the todo array index
+    getEditValues(e);
   });
-
   return editBtn;
+};
+
+const getEditValues = (e) => {
+  const projects = getProjects();
+  const todoBox = e.target.closest(".todoBoxes");
+  const index = todoBox.dataset.index;
+  projects[projectIndex].updateTodo(index, newValues());
+  setProjects(projects);
+  renderTodos(getProjects()[projectIndex].getTodos());
 };
 
 const deleteButton = () => {
@@ -73,13 +84,6 @@ const deleteButton = () => {
   });
 
   return deleteBtn;
-};
-
-const deleteFromArray = (e) => {
-  const todos = getProjects();
-  const todoBox = e.target.closest(".todoBoxes");
-  const index = todoBox.dataset.index;
-  todos.splice(index, 1);
 };
 
 const deleteFromDOM = () => {
@@ -112,7 +116,7 @@ const newValues = () => {
   return todoValues;
 };
 
-function renderTodos(todos) {
+const renderTodos = (todos) => {
   let todoContainer = document.querySelector(".todoContainer");
   todoContainer.innerHTML = "";
 
@@ -135,6 +139,6 @@ function renderTodos(todos) {
     todoBoxes.append(leftSide, rightSide);
     todoContainer.append(todoBoxes);
   });
-}
+};
 
 export { addTitle, addTodo, getTodoValues, editButton };

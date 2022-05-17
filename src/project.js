@@ -38,10 +38,17 @@ const createProjects = (name) => {
   projects.push(todoProject);
 };
 
+const deleteFromArray = (e) => {
+  const todos = getProjects();
+  const todoBox = e.target.closest(".todoBoxes");
+  const index = todoBox.dataset.index;
+  todos.splice(index, 1);
+};
+
 // Allow the todo module to get the projects array
 const getProjects = () => projects;
 
 // Update the projects array
 const setProjects = (newProjects) => (projects = newProjects);
 
-export { createProjects, getProjects, setProjects };
+export { createProjects, getProjects, setProjects, deleteFromArray };
