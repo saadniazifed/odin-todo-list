@@ -22,19 +22,11 @@ const createProject = (name) => {
     todoObj.setDueDate(newDetails.dueDate);
   };
 
-  // const deleteFromArray = (e) => {
-  //   const todoBox = e.target.closest(".todoBoxes");
-  //   const index = todoBox.dataset.index;
-  //   console.log(index);
-  //   // todos.splice(index, 1);
-  // };
-
   const setTodos = (newTodos) => (todos = newTodos);
 
   return {
     addTodo,
     updateTodo,
-    // deleteFromArray,
     getTodos,
     setTodos,
     getName,

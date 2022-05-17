@@ -1,7 +1,7 @@
 import { createElement } from "./createElements";
 import { createProjects, getProjects, setProjects } from "./project";
 
-let projectIndex;
+let projectIndex; //Project Array index.
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
@@ -52,41 +52,55 @@ const addTodo = () => {
   });
 };
 
-const deleteFromDOM = () => {
-  //
-};
-
 const editButton = () => {
   const editBtn = createElement("button", ["editBtn"], {});
   editBtn.innerText = "Edit";
   editBtn.addEventListener("click", (e) => {
+    const projects = getProjects(); //getting the project array
     const todoBox = e.target.closest(".todoBoxes");
-    const index = todoBox.dataset.index;
+    const index = todoBox.dataset.index; //getting the todo array index
   });
 
   return editBtn;
 };
 
 const deleteButton = () => {
-  const todoContainer = document.querySelector(".todContainer");
   const deleteBtn = createElement("button", [], {});
   deleteBtn.innerText = "Delete";
-  const todos = getProjects();
-
   deleteBtn.addEventListener("click", (e) => {
-    const todoBox = e.target.closest(".todoBoxes");
-    const index = todoBox.dataset.index;
-    todos.splice(index, 1);
-
-    const indexValue = document.querySelector(`[data-index="${index}"]`);
-    const todoContainer = document.querySelector(".todoContainer");
-    todoContainer.removeChild(indexValue);
+    deleteFromArray(e);
+    deleteFromDOM();
   });
 
   return deleteBtn;
 };
 
+const deleteFromArray = (e) => {
+  const todos = getProjects();
+  const todoBox = e.target.closest(".todoBoxes");
+  const index = todoBox.dataset.index;
+  todos.splice(index, 1);
+};
+
+const deleteFromDOM = () => {
+  const indexValue = document.querySelector(`[data-index="${index}"]`);
+  const todoContainer = document.querySelector(".todoContainer");
+  todoContainer.removeChild(indexValue);
+};
+
 const getTodoValues = () => {
+  const todoValues = {
+    name: document.querySelector("#taskName").value,
+    description: document.querySelector("#taskDescription").value,
+    priority: document.querySelector('input[name="priorityValue"]:checked')
+      .value,
+    dueDate: document.querySelector("#dueDate").value,
+  };
+
+  return todoValues;
+};
+
+const newValues = () => {
   const todoValues = {
     name: document.querySelector("#taskName").value,
     description: document.querySelector("#taskDescription").value,
