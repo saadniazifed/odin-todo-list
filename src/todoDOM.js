@@ -1,4 +1,5 @@
 import { createElement } from "./createElements";
+
 import {
   createProjects,
   getProjects,
@@ -52,6 +53,7 @@ const addTodo = () => {
       getTodoValues().priority,
       getTodoValues().dueDate
     );
+
     setProjects(projects);
     renderTodos(getProjects()[projectIndex].getTodos());
   });
@@ -92,6 +94,22 @@ const deleteFromDOM = () => {
   todoContainer.removeChild(indexValue);
 };
 
+const viewButton = () => {
+  const viewBtn = createElement("button", [], {});
+  viewBtn.innerText = "View Details";
+
+  viewBtn.addEventListener("click", () => {
+    getViewDetails();
+  });
+
+  return viewBtn;
+};
+
+const getViewDetails = () => {
+  alert(getTodoValues().name);
+  alert(getTodoValues().description);
+};
+
 const getTodoValues = () => {
   const todoValues = {
     name: document.querySelector("#taskName").value,
@@ -130,12 +148,14 @@ const renderTodos = (todos) => {
 
     const name = todo.getName();
     const priority = todo.getPriority();
+    const date = getTodoValues().dueDate;
 
     let editBtn = editButton();
     let deleteBtn = deleteButton();
+    let viewBtn = viewButton();
 
     leftSide.append(name);
-    rightSide.append(priority, editBtn, deleteBtn);
+    rightSide.append(priority, date, editBtn, deleteBtn, viewBtn);
     todoBoxes.append(leftSide, rightSide);
     todoContainer.append(todoBoxes);
   });
