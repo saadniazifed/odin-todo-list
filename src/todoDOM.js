@@ -12,9 +12,15 @@ let projectIndex; //Project Array index.
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
   addTitleBtn.addEventListener("click", () => {
+    projectVisible();
     getProjectTitle();
     renderProjects();
   });
+};
+
+const projectVisible = () => {
+  const projectDiv = document.querySelector(".projectDiv");
+  projectDiv.style.visibility = "visible";
 };
 
 const getProjectTitle = () => {
@@ -28,7 +34,7 @@ const renderProjects = () => {
 
   const projects = getProjects();
   projects.forEach((project, index) => {
-    const projectName = createElement("div", [], {
+    const projectName = createElement("div", ["cursor"], {
       "data-project-index": index,
     });
     projectName.textContent = project.getName();
@@ -78,24 +84,26 @@ const getEditValues = (e) => {
 };
 
 const deleteButton = () => {
-  const deleteBtn = createElement("button", [], {});
+  const deleteBtn = createElement("button", ["deleteBtn"], {});
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", (e) => {
     deleteFromArray(e);
-    deleteFromDOM();
+    deleteFromDOM(e);
   });
 
   return deleteBtn;
 };
 
-const deleteFromDOM = () => {
+const deleteFromDOM = (e) => {
+  const todoBox = e.target.closest(".todoBoxes");
+  const index = todoBox.dataset.index;
   const indexValue = document.querySelector(`[data-index="${index}"]`);
   const todoContainer = document.querySelector(".todoContainer");
   todoContainer.removeChild(indexValue);
 };
 
 const viewButton = () => {
-  const viewBtn = createElement("button", [], {});
+  const viewBtn = createElement("button", ["viewDetailsBtn"], {});
   viewBtn.innerText = "View Details";
 
   viewBtn.addEventListener("click", () => {
@@ -161,4 +169,22 @@ const renderTodos = (todos) => {
   });
 };
 
-export { addTitle, addTodo, getTodoValues, editButton };
+const showForm = () => {
+  const showForm = document.querySelector(".showForm");
+  const todoForm = document.querySelector(".todoForm");
+
+  showForm.addEventListener("click", () => {
+    todoForm.style.visibility = "visible";
+    document.getElementById("pop-1").classList.toggle("active");
+  });
+};
+
+const hideForm = () => {
+  const closeForm = document.querySelector(".closeForm");
+  const todoForm = document.querySelector(".todoForm");
+  closeForm.addEventListener("click", () => {
+    todoForm.style.visibility = "hidden";
+  });
+};
+
+export { addTitle, addTodo, getTodoValues, editButton, showForm, hideForm };
