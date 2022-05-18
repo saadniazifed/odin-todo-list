@@ -7,7 +7,7 @@ import {
   deleteFromArray,
 } from "./project";
 
-let projectIndex; //Project Array index.
+let projectIndex;
 
 const addTitle = () => {
   const addTitleBtn = document.querySelector(".addTitleBtn");
@@ -102,22 +102,6 @@ const deleteFromDOM = (e) => {
   todoContainer.removeChild(indexValue);
 };
 
-const viewButton = () => {
-  const viewBtn = createElement("button", ["viewDetailsBtn"], {});
-  viewBtn.innerText = "View Details";
-
-  viewBtn.addEventListener("click", () => {
-    getViewDetails();
-  });
-
-  return viewBtn;
-};
-
-const getViewDetails = () => {
-  alert(getTodoValues().name);
-  alert(getTodoValues().description);
-};
-
 const getTodoValues = () => {
   const todoValues = {
     name: document.querySelector("#taskName").value,
@@ -149,21 +133,18 @@ const renderTodos = (todos) => {
   todos.forEach((todo, index) => {
     const leftSide = createElement("div", ["leftSide"], {});
     const rightSide = createElement("div", ["rightSide"], {});
-    // create element and append to main body
     const todoBoxes = createElement("div", ["todoBoxes"], {
       "data-index": index,
     });
 
     const name = todo.getName();
     const priority = todo.getPriority();
-    const date = getTodoValues().dueDate;
 
     let editBtn = editButton();
     let deleteBtn = deleteButton();
-    let viewBtn = viewButton();
 
     leftSide.append(name);
-    rightSide.append(priority, date, editBtn, deleteBtn, viewBtn);
+    rightSide.append(priority, editBtn, deleteBtn);
     todoBoxes.append(leftSide, rightSide);
     todoContainer.append(todoBoxes);
   });

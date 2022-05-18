@@ -117,9 +117,14 @@
 .rightSide,
 .leftSide {
   display: flex;
-  gap: 1rem;
   align-items: center;
   font-family: "Poppins";
+}
+
+.rightContainer,
+.rightSide {
+  display: flex;
+  gap: 1rem;
 }
 
 .addTitleDiv {
